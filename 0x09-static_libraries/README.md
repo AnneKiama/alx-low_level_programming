@@ -1,1 +1,1 @@
-static libraries
+ creating an archive file
