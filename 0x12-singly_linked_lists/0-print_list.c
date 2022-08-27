@@ -3,45 +3,25 @@
 #include "lists.h"
 
 /**
-  * binary_to_uint - Converts a binary number to an unsigned int
-  * @b: The binary string to converts
+  * print_list - Prints all elements of a list
+  * @h: A linked list
   *
-  * Return: The positive number converted from a binary
+  * Return: The number of nodes
   */
-unsigned int binary_to_uint(const char *b)
+size_t print_list(const list_t *h)
 {
-	unsigned int len = 0, count = 0, sum = 0;
+	size_t count = 0;
 
-	if (b == NULL)
-		return (0);
-
-	len = _strlen(b);
-	while (len--)
+	while (h != NULL)
 	{
-		if (b[len] != 48 && b[len] != 49)
-			return (0);
+		if (h->str == NULL)
+			printf("[0] (nil)\n");
+		else
+			printf("[%d] %s\n", h->len, h->str);
 
-		if (b[len] == 49)
-			sum += 1 << count;
-
+		h = h->next;
 		count++;
 	}
 
-	return (sum);
-}
-
-/**
-  * _strlen - Returns the length of a string
-  * @s: String to count
-  *
-  * Return: String length
-  */
-int _strlen(const char *s)
-{
-	int c = 0;
-
-	while (s[c])
-		c++;
-
-	return (c);
+	return (count);
 }
